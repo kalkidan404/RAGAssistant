@@ -10,7 +10,6 @@ NOT_FOUND_MSG = "I could not find the answer in the provided documents."
 def get_answer(user_question, chat_history):
     # 1. Setup paths
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    # Adjusting to "../docs" as per your folder structure
     DOCS_FOLDER = os.path.normpath(os.path.join(BASE_DIR, "../docs"))
     CHROMA_DIR = os.path.join(BASE_DIR, "chroma_db")
 
@@ -51,8 +50,14 @@ def get_answer(user_question, chat_history):
 
     context_text = "\n\n".join([d.page_content for d in context_docs])
     
-    # 4. Format History for Prompt
-    history_text = "\n".join([f"User: {m['q']}\nAI: {m['a']}" for m in chat_history[-3:]]) if chat_history else ""
+    # 4. Format History for Prompt (Properly Indented)
+    if chat_history:
+        history_text = "\n".join([
+            f"User: {m['content']}" if m['role'] == 'user' else f"AI: {m['content']}" 
+            for m in chat_history[-6:]
+        ])
+    else:
+        history_text = ""
 
     # 5. THE SYSTEM PROMPT
     prompt = f"""
