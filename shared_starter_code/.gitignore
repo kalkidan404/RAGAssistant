@@ -1,0 +1,11 @@
+# Ignore Chroma local database (all variants)
+chroma_db/
+shared_starter_code/chroma_db/
+shared_starter_code/chroma_db/**
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
