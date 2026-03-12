@@ -31,7 +31,7 @@ NOT_FOUND_MSG = "I could not find the answer in the provided documents."
 
 # --- FIX 2: Dynamic Pathing for Deployment ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DOCS_FOLDER = os.path.join(BASE_DIR, "docs")
+DOCS_FOLDER = os.path.join(BASE_DIR, "../docs")
 CHROMA_DIR = os.path.join(BASE_DIR, "chroma_db")
 
 def load_and_process_docs():
