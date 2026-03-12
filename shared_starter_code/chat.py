@@ -5,37 +5,51 @@ import os
 st.set_page_config(page_title="AAU Assistant", page_icon="🎓")
 
 # Custom CSS for black-and-gold theme
+# Custom CSS for black-and-gold theme
 st.markdown("""
 <style>
+/* 1. Global Background */
 .stApp { 
-    background-color: #0D0D0D;  /* Black background */
-    color: #FFD700;             /* Gold default text */
+    background-color: #000000 !important; 
 }
 
-/* Chat bubbles */
+/* 2. Force EVERY text element to Gold */
+* {
+    color: #FFD700 !important;
+    font-family: 'sans-serif';
+}
+
+/* 3. Specifically target headers and titles */
+h1, h2, h3, p, span, label, div {
+    color: #FFD700 !important;
+}
+
+/* 4. Chat Input Box (Text you type) */
+input, textarea {
+    color: #FFD700 !important;
+    -webkit-text-fill-color: #FFD700 !important;
+    background-color: #1A1A1A !important;
+}
+
+/* 5. Chat Bubbles */
 [data-testid="stChatMessage"] {
-    background-color: #1A1A1A;  /* Dark bubble background */
-    color: #FFD700;             /* Gold text in bubble */
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 10px;
+    background-color: #1A1A1A !important;
+    border: 1px solid #FFD700 !important;
 }
 
-/* Buttons */
-.stButton>button {
-    background-color: #FFD700;   /* Gold buttons */
-    color: #0D0D0D;              /* Black text on buttons */
-    border: none;
+/* 6. Spinner/Loading Message */
+.stSpinner > div > div {
+    color: #FFD700 !important;
 }
 
-/* Input box */
-.stTextInput>div>div>input {
-    background-color: #1A1A1A;  /* Dark input box */
-    color: #FFD700;              /* Gold input text */
-    border: 1px solid #FFD700;   /* Optional gold border */
-}
+/* 7. Hide the default Streamlit footer/menu for a cleaner look */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+
 </style>
 """, unsafe_allow_html=True)
+
 
 st.title("🎓 AAU General Assistant")
 
