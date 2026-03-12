@@ -8,7 +8,7 @@ from langchain_groq import ChatGroq
 def get_answer(user_question, chat_history):
     # Setup paths
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    DOCS_FOLDER = os.path.join(BASE_DIR, "./docs")
+    DOCS_FOLDER = os.path.join(BASE_DIR, "../docs")
     CHROMA_DIR = os.path.join(BASE_DIR, "chroma_db")
 
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
